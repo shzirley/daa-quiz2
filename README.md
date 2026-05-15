@@ -154,7 +154,7 @@ quiz2/
 ├── main.py                      # Seluruh logika: game, BFS, DFS, simulasi, UI
 ├── requirements.txt             # Dependensi Python
 ├── README.md                    # Dokumentasi ini
-├── daa_snake.mp4                # Video demo gameplay & eksperimen
+├── daa_quiz2.mp4                # Video demo gameplay & eksperimen
 └── snake_experiment_log.csv     # Log hasil run (dibuat otomatis)
 ```
 
@@ -186,9 +186,10 @@ Kedua algoritma menghitung **jumlah node yang diekspansi** untuk membandingkan b
 
 Cuplikan gameplay dan batch eksperimen BFS vs DFS:
 
-<video src="./daa_quiz2.mp4" controls="controls" style="max-width: 100%;">
-</video>
+https://github.com/shzirley/daa-quiz2/raw/main/daa_quiz2.mp4
 
 Video menampilkan jendela Pygame (ular, makanan, rintangan) serta alur menjalankan simulasi hingga tabel perbandingan di terminal.
+
+> **Catatan:** Pastikan file `daa_quiz2.mp4` sudah di-commit dan di-push ke repo. Jika preview tidak muncul, edit README di [GitHub](https://github.com/shzirley/daa-quiz2) → seret `daa_quiz2.mp4` ke editor → GitHub akan mengganti URL di atas dengan `https://github.com/user-attachments/assets/...` (format yang paling andal untuk preview inline).
 
 ---
