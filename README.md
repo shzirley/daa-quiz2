@@ -186,7 +186,8 @@ Kedua algoritma menghitung **jumlah node yang diekspansi** untuk membandingkan b
 
 Cuplikan gameplay dan batch eksperimen BFS vs DFS:
 
-**[daa_snake.mp4](./daa_quiz2.mp4)**
+<video src="./daa_quiz2.mp4" controls="controls" style="max-width: 100%;">
+</video>
 
 Video menampilkan jendela Pygame (ular, makanan, rintangan) serta alur menjalankan simulasi hingga tabel perbandingan di terminal.
 
