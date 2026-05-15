@@ -1,0 +1,21 @@
+Algorithm,Level,Total Food,Total Steps,Average Time (ms),Average Expansion,Replans,Game Over Reason
+BFS,Medium,38,670,1.0141,209.82,39,No Path Found (Trapped)
+BFS,Medium,45,691,0.9253,164.57,46,No Path Found (Trapped)
+BFS,Medium,37,596,0.9160,184.34,38,No Path Found (Trapped)
+BFS,Medium,29,492,0.9637,200.53,30,No Path Found (Trapped)
+BFS,Medium,34,602,1.1754,204.49,35,No Path Found (Trapped)
+DFS,Medium,15,1000,1.2299,212.19,16,Step Limit Reached
+DFS,Medium,19,1000,1.2228,181.70,20,Step Limit Reached
+DFS,Medium,13,1000,1.0452,176.21,14,Step Limit Reached
+DFS,Medium,12,1000,1.2958,207.85,13,Step Limit Reached
+DFS,Medium,11,1000,1.2167,190.00,12,Step Limit Reached
+BFS,Medium,40,714,0.6118,197.51,41,No Path Found (Trapped)
+BFS,Medium,54,1000,0.6285,190.96,55,Step Limit Reached
+BFS,Medium,47,750,0.5468,172.31,48,No Path Found (Trapped)
+BFS,Medium,59,1000,0.5695,182.70,60,Step Limit Reached
+BFS,Medium,52,927,0.5860,182.64,53,No Path Found (Trapped)
+DFS,Medium,13,1000,2.8295,166.14,14,Step Limit Reached
+DFS,Medium,16,1000,0.6423,158.41,17,Step Limit Reached
+DFS,Medium,12,1000,0.9438,203.31,13,Step Limit Reached
+DFS,Medium,12,1000,0.8855,198.77,13,Step Limit Reached
+DFS,Medium,14,1000,1.3625,198.87,15,Step Limit Reached
