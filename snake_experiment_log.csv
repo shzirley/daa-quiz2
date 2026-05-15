@@ -19,3 +19,13 @@ DFS,Medium,16,1000,0.6423,158.41,17,Step Limit Reached
 DFS,Medium,12,1000,0.9438,203.31,13,Step Limit Reached
 DFS,Medium,12,1000,0.8855,198.77,13,Step Limit Reached
 DFS,Medium,14,1000,1.3625,198.87,15,Step Limit Reached
+BFS,Medium,58,1000,0.8298,171.90,59,Step Limit Reached
+BFS,Medium,50,850,0.9110,167.51,51,No Path Found (Trapped)
+BFS,Medium,38,599,0.8204,168.74,39,No Path Found (Trapped)
+BFS,Medium,55,961,0.8265,186.29,56,No Path Found (Trapped)
+BFS,Medium,34,504,0.6975,161.46,35,No Path Found (Trapped)
+DFS,Medium,12,1000,1.4042,199.62,13,Step Limit Reached
+DFS,Medium,18,1000,0.8039,155.58,19,Step Limit Reached
+DFS,Medium,12,1000,1.0043,191.54,13,Step Limit Reached
+DFS,Medium,14,1000,1.0497,207.47,15,Step Limit Reached
+DFS,Medium,16,1000,1.0864,180.29,17,Step Limit Reached

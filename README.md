@@ -28,7 +28,6 @@ Tujuan eksperimen: melihat perbedaan **skor (makanan)**, **jumlah langkah**, **w
 | Program kelompok (game) | Game Snake dengan rintangan statis & dinamis |
 | Minimal satu algoritma kuliah | **BFS** dan **DFS** untuk pathfinding |
 | Bahasa bebas | Python |
-| Upload GitHub | *(isi URL repo di bawah)* |
 
 ---
 
@@ -36,9 +35,8 @@ Tujuan eksperimen: melihat perbedaan **skor (makanan)**, **jumlah langkah**, **w
 
 | Nama | NIM | Kontribusi |
 |------|-----|------------|
-| *Jorell Ramos Sinaga* | *5025241202* | *(mis. logika game, BFS/DFS, Pygame, eksperimen, README)* |
-| *Angela Vania Sugiyono* | *5025241226* | |
-| *(nama)* | *(nim)* | |
+| *Jorell Ramos Sinaga* | *5025241202* | *BFS & DFS (find_path_bfs, find_path_dfs), replanning di run_simulation, metrik waktu & node ekspansi, tabel perbandingan BFS vs DFS* |
+| *Angela Vania Sugiyono* | *5025241226* | *SnakeGame (gerak, makanan, tabrakan), layout level, Pygame, README, video demo, push ke GitHub* |
 
 
 ---
@@ -188,12 +186,8 @@ Kedua algoritma menghitung **jumlah node yang diekspansi** untuk membandingkan b
 
 Cuplikan gameplay dan batch eksperimen BFS vs DFS:
 
-**[daa_snake.mp4](./daa_snake.mp4)**
+**[daa_snake.mp4](./daa_quiz2.mp4)**
 
 Video menampilkan jendela Pygame (ular, makanan, rintangan) serta alur menjalankan simulasi hingga tabel perbandingan di terminal.
 
 ---
-
-## Lisensi & catatan
-
-Proyek akademik untuk Quiz 2 DAA. Silakan hubungi anggota kelompok di atas untuk pertanyaan teknis.
