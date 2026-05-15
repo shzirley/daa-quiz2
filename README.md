@@ -1,125 +1,127 @@
-# Snake Pathfinding — Perbandingan BFS vs DFS
+# Snake Pathfinding — BFS vs DFS Comparison
 
-**Mata kuliah:** Desain & Analisis Algoritma (DAA) — Quiz 2  
-**Bahasa:** Python 3  
-**Antarmuka:** Pygame (visualisasi game) + terminal (menu & laporan eksperimen)
+**Course:** Design & Analysis of Algorithms (DAA) — Quiz 2  
+**Language:** Python 3  
+**Interface:** Pygame (game visualization) + terminal (menu & experiment report)  
+**Repository:** [github.com/shzirley/daa-quiz2](https://github.com/shzirley/daa-quiz2)
 
 ---
 
-## Ringkasan proyek
+## Project summary
 
-Proyek ini adalah **game Snake otomatis** di mana ular bergerak sendiri menuju makanan dengan bantuan algoritma pencarian jalur. Kami membandingkan dua algoritma dari materi kuliah:
+This project is an **automated Snake game** where the snake moves on its own toward food using pathfinding algorithms. We compare two algorithms from the course:
 
-| Algoritma | Peran dalam game |
+| Algorithm | Role in the game |
 |-----------|------------------|
-| **BFS** (Breadth-First Search) | Mencari jalur ke makanan; pada graf tak berbobot menghasilkan **jalur terpendek** (langkah minimum). |
-| **DFS** (Depth-First Search) | Mencari jalur ke makanan dengan eksplorasi **mendalam**; tidak menjamin jalur terpendek. |
+| **BFS** (Breadth-First Search) | Finds a path to food; on an unweighted graph it yields the **shortest path** (minimum steps). |
+| **DFS** (Depth-First Search) | Finds a path with **depth-first** exploration; does not guarantee the shortest path. |
 
-Peta permainan dimodelkan sebagai **graf grid**: setiap sel = simpul, gerakan atas/bawah/kiri/kanan = tepi (jika tidak terhalang dinding, rintangan, atau tubuh ular).
+The game map is modeled as a **grid graph**: each cell is a node; up/down/left/right moves are edges (when not blocked by walls, obstacles, or the snake body).
 
-Tujuan eksperimen: melihat perbedaan **skor (makanan)**, **jumlah langkah**, **waktu keputusan pathfinding**, dan **jumlah node diekspansi** antara BFS dan DFS pada level kesulitan yang sama.
-
----
-
-## Kesesuaian dengan instruksi Quiz 2
-
-| Persyaratan | Pemenuhan |
-|-------------|-----------|
-| Program kelompok (game) | Game Snake dengan rintangan statis & dinamis |
-| Minimal satu algoritma kuliah | **BFS** dan **DFS** untuk pathfinding |
-| Bahasa bebas | Python |
+**Experiment goal:** Compare **score (food eaten)**, **step count**, **pathfinding decision time**, and **nodes expanded** between BFS and DFS on the same difficulty level.
 
 ---
 
-## Anggota kelompok
+## Quiz 2 requirements checklist
 
-| Nama | NIM | Kontribusi |
-|------|-----|------------|
-| *Jorell Ramos Sinaga* | *5025241202* | *BFS & DFS (find_path_bfs, find_path_dfs), replanning di run_simulation, metrik waktu & node ekspansi, tabel perbandingan BFS vs DFS* |
-| *Angela Vania Sugiyono* | *5025241226* | *SnakeGame (gerak, makanan, tabrakan), layout level, Pygame, README, video demo, push ke GitHub* |
-
+| Requirement | How we meet it |
+|-------------|----------------|
+| Group program (game) | Snake game with static & dynamic obstacles |
+| At least one course algorithm | **BFS** and **DFS** for pathfinding |
+| Any programming language | Python |
 
 ---
 
-## Cara menjalankan
+## Team members
 
-### Prasyarat
+| Name | Student ID | Contribution |
+|------|------------|--------------|
+| Jorell Ramos Sinaga | 5025241202 | BFS & DFS (`find_path_bfs`, `find_path_dfs`), replanning in `run_simulation`, time & node-expansion metrics, BFS vs DFS comparison table |
+| Angela Vania Sugiyono | 5025241226 | `SnakeGame` (movement, food, collisions), level layouts, Pygame UI, README, YouTube demo, GitHub setup & push |
 
-- Python 3.10+ (diuji dengan Python 3.13)
+---
+
+## How to run
+
+### Prerequisites
+
+- Python 3.10+ (tested with Python 3.13)
 - Windows / Linux / macOS
 
-### Instalasi
+### Installation
 
 ```bash
 cd quiz2
 pip install -r requirements.txt
 ```
 
-### Menjalankan program
+### Run the program
 
 ```bash
 python main.py
 ```
 
-1. Pilih level: **Easy** / **Medium** / **Hard**
-2. Program menjalankan **5 simulasi BFS** lalu **5 simulasi DFS** (total 10 run per batch)
-3. Setiap run membuka **jendela Pygame**; ular bergerak otomatis mengikuti jalur dari algoritma
-4. Setelah selesai, terminal menampilkan **tabel perbandingan** BFS vs DFS
-5. Jawab `y` / `n` jika ingin mengulang batch dengan level yang sama
+1. Choose a level: **Easy** / **Medium** / **Hard**
+2. The program runs **5 BFS simulations** then **5 DFS simulations** (10 runs per batch)
+3. Each run opens a **Pygame window**; the snake follows the path from the algorithm
+4. When finished, the terminal prints a **BFS vs DFS comparison table**
+5. Answer `y` / `n` to run another batch at the same level
+
+> **Note:** In-game prompts and console messages are in Indonesian (as implemented in `main.py`).
 
 ---
 
-## Alur program (alur kerja)
+## Program flow
 
 ```
-Input level (terminal)
+Level input (terminal)
     → 5× run_simulation(..., "BFS")
     → 5× run_simulation(..., "DFS")
-    → print_comparison()  (tabel rata-rata)
-    → append hasil ke snake_experiment_log.csv
-    → tanya lanjut batch? (y/n)
+    → print_comparison()  (average metrics table)
+    → append results to snake_experiment_log.csv
+    → prompt: continue batch? (y/n)
 ```
 
-Pada setiap langkah game:
+Each game step:
 
-1. Jika tidak ada jalur tersisa di antrian → **replan**: panggil BFS atau DFS dari kepala ular ke posisi makanan
-2. Jalur disimpan di antrian langkah; ular bergerak satu sel per frame
-3. Jika makanan dimakan / rintangan dinamis muncul → kondisi berubah → **replan** lagi
-4. Game berakhir jika: tabrakan, terjebak (no path), atau batas **1000 langkah**
-
----
-
-## Level kesulitan
-
-| Level | Ukuran grid | Rintangan statis | Rintangan dinamis |
-|-------|-------------|------------------|-------------------|
-| **Easy** | 15×15 | Tidak ada | Tidak ada |
-| **Medium** | 20×20 | Dua pilar vertikal | Setelah 7 makanan: spawn 1–2 rintangan acak |
-| **Hard** | 25×25 | Bentuk plus (+) | Setelah 5 makanan: spawn 1–5 rintangan acak |
-
-**Legenda warna (Pygame):**
-
-- Hijau — ular | Merah — makanan  
-- Abu gelap — rintangan statis | Abu terang — rintangan dinamis  
+1. When the step queue is empty → **replan**: run BFS or DFS from snake head to food
+2. The path is stored in a step queue; the snake moves one cell per frame
+3. When food is eaten / dynamic obstacles spawn → state changes → **replan**
+4. Game ends on: collision, no path (trapped), or **1000 step** limit
 
 ---
 
-## Metrik yang dicatat
+## Difficulty levels
 
-| Metrik | Arti |
-|--------|------|
-| **Total Food** | Banyak makanan yang dimakan (skor) |
-| **Total Steps** | Langkah sampai game over (maks. 1000) |
-| **Average Time (ms)** | Rata-rata waktu CPU per keputusan pathfinding |
-| **Average Expansion** | Rata-rata node yang diekspansi per replan |
-| **Replans** | Berapa kali pathfinding dijalankan ulang |
-| **Game Over Reason** | Penyebab berakhir (mis. trapped, step limit, tabrakan) |
+| Level | Grid size | Static obstacles | Dynamic obstacles |
+|-------|-----------|------------------|-------------------|
+| **Easy** | 15×15 | None | None |
+| **Medium** | 20×20 | Two vertical pillars | After 7 food: spawn 1–2 random obstacles |
+| **Hard** | 25×25 | Plus (+) shape | After 5 food: spawn 1–5 random obstacles |
 
-Hasil tiap run ditambahkan ke file **`snake_experiment_log.csv`** untuk dokumentasi dan analisis lanjut.
+**Color legend (Pygame):**
+
+- Green — snake | Red — food  
+- Dark gray — static obstacles | Light gray — dynamic obstacles  
 
 ---
 
-## Contoh output terminal
+## Recorded metrics
+
+| Metric | Meaning |
+|--------|---------|
+| **Total Food** | Food eaten (score) |
+| **Total Steps** | Steps until game over (max 1000) |
+| **Average Time (ms)** | Average CPU time per pathfinding decision |
+| **Average Expansion** | Average nodes expanded per replan |
+| **Replans** | How many times pathfinding was rerun |
+| **Game Over Reason** | End cause (e.g. trapped, step limit, collision) |
+
+Each run is appended to **`snake_experiment_log.csv`** for documentation and further analysis.
+
+---
+
+## Sample terminal output
 
 ```
 Pilih Level Eksperimen (Easy/Medium/Hard): Medium
@@ -143,52 +145,56 @@ Menjalankan 5x DFS...
   >>> PEMENANG BATCH INI: *** BFS *** (3/4 kategori)
 ```
 
-**Catatan interpretasi:** hasil bisa berbeda tiap batch karena penempatan makanan dan rintangan dinamis **acak**. BFS cenderung unggul pada makanan dan langkah karena jalur ke makanan lebih pendek; DFS sering memakan lebih banyak langkah sebelum mencapai batas 1000.
+**Interpretation:** Results vary per batch because food placement and dynamic obstacles are **random**. BFS tends to win on food and steps because paths to food are shorter; DFS often uses more steps before hitting the 1000-step cap.
 
 ---
 
-## Struktur file
+## File structure
 
 ```
 quiz2/
-├── main.py                      # Seluruh logika: game, BFS, DFS, simulasi, UI
-├── requirements.txt             # Dependensi Python
-├── README.md                    # Dokumentasi ini
-└── snake_experiment_log.csv     # Log hasil run (dibuat otomatis)
+├── main.py                      # Game logic, BFS, DFS, simulation, UI
+├── requirements.txt             # Python dependencies
+├── README.md                    # This documentation
+└── snake_experiment_log.csv     # Run log (created automatically)
 ```
 
-### Bagian penting di `main.py`
+### Key sections in `main.py`
 
-| Bagian | Baris (perkiraan) | Fungsi |
-|--------|-------------------|--------|
-| `SnakeGame` | 26–134 | State game, gerak, rintangan, tetangga valid |
-| `find_path_bfs` | 139–160 | Implementasi BFS |
-| `find_path_dfs` | 163–184 | Implementasi DFS |
-| `run_simulation` | 225–334 | Loop Pygame + replanning |
-| `print_comparison` | 337–386 | Tabel perbandingan batch |
+| Section | Lines (approx.) | Purpose |
+|---------|-----------------|---------|
+| `SnakeGame` | 26–134 | Game state, movement, obstacles, valid neighbors |
+| `find_path_bfs` | 139–160 | BFS implementation |
+| `find_path_dfs` | 163–184 | DFS implementation |
+| `run_simulation` | 225–334 | Pygame loop + replanning |
+| `print_comparison` | 337–386 | Batch comparison table |
 
 ---
 
-## Algoritma (ringkas)
+## Algorithms (brief)
 
-**Graf:** Grid 4-arah; simpul = sel kosong atau sel yang boleh dilewati (termasuk ekor saat ular bergerak).
+**Graph:** 4-directional grid; nodes are passable cells (including the tail cell when the snake can move into it).
 
-**BFS:** Antrian `deque`, kunjungi per level → jalur pertama ke makanan = jalur terpendek (dalam jumlah langkah).
+**BFS:** `deque` queue, level-by-level visit → first path to food is shortest (in step count).
 
-**DFS:** Stack (LIFO), kunjungi dalam-dulu → jalur ditemukan bisa lebih panjang.
+**DFS:** Stack (LIFO), depth-first visit → path found may be longer.
 
-Kedua algoritma menghitung **jumlah node yang diekspansi** untuk membandingkan beban komputasi per replan.
+Both algorithms count **nodes expanded** to compare computational cost per replan.
 
 ---
 
 ## Demo video
 
-Cuplikan gameplay dan batch eksperimen BFS vs DFS (klik thumbnail untuk menonton):
+Gameplay and BFS vs DFS experiment batch (click thumbnail to watch):
 
 [![Demo video — Snake Pathfinding BFS vs DFS](https://img.youtube.com/vi/YCfajdwADps/hqdefault.jpg)](https://youtu.be/YCfajdwADps)
 
 **YouTube:** [https://youtu.be/YCfajdwADps](https://youtu.be/YCfajdwADps)
 
-Video menampilkan jendela Pygame (ular, makanan, rintangan) serta alur menjalankan simulasi hingga tabel perbandingan di terminal.
+The video shows the Pygame window (snake, food, obstacles) and running a simulation through to the comparison table in the terminal.
 
 ---
+
+## License & notes
+
+Academic project for DAA Quiz 2. Contact team members above for technical questions.
